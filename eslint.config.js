@@ -23,6 +23,13 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
+    extends: [
+      'eslint:recommended',
+      'plugin:react/recommended',
+      'plugin:react/jsx-runtime',
+      'plugin:react-hooks/recommended',
+      'prettier',
+    ],
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
