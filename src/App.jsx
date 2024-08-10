@@ -1,9 +1,7 @@
+import Sidebar from './components/Sidebar'
+
 function App() {
-  return (
-    <div>
-      <h1 className="p-6 text-blue-400">Hello Worlds</h1>
-    </div>
-  )
+  return <Sidebar />
 }
 
 export default App

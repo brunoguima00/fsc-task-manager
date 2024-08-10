@@ -1,5 +1,5 @@
-@tailwind base;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/utilities';
 
 @layer base {
   @font-face {
@@ -55,5 +55,9 @@
     font-weight: 900;
     font-style: normal;
     src: url('/src/assets/fonts/Poppins-Black.ttf');
+  }
+
+  body {
+    @apply bg-[#f8f8f8];
   }
 }
