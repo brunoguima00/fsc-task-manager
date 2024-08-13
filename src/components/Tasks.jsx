@@ -67,7 +67,7 @@ const Tasks = () => {
 
       {/* Lista de Tarefas */}
 
-      <div className="rounded-xl bg-white p-6">
+      <div className="space-y-6 rounded-xl bg-white p-6">
         <div className="space-y-3">
           <TasksSeparator icon={<SunIcon />} title="Manhã" />
 
