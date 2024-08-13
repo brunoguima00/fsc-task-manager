@@ -4,7 +4,7 @@ const TASKS = [
     title: 'Tarefa 1',
     description: 'Descrição da tarefa 1',
     time: 'morning',
-    status: 'todo',
+    status: 'inprogress',
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const TASKS = [
   {
     id: 5,
     title: 'Tarefa 5',
-    description: 'Descrição da tarefa 5',
+    description: 'Descrição da tarefa ',
     time: 'evening',
     status: 'inprogress',
   },
