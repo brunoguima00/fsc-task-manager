@@ -1,7 +1,4 @@
-import TaskIcon from '../assets/icons/check.svg?react'
-import ProgressIcon from '../assets/icons/progress.svg?react'
-import DetailIcon from '../assets/icons/detail.svg?react'
-import TrashIcon from '../assets/icons/trash.svg?react'
+import { CheckIcon, ProgressIcon, DetailIcon, TrashIcon } from '../assets/icons'
 import Button from './Button'
 
 const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
@@ -31,7 +28,7 @@ const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
             className="absolute h-full w-full cursor-pointer opacity-0"
             onChange={() => handleCheckboxClick(task.id)}
           />
-          {task.status === 'done' && <TaskIcon />}
+          {task.status === 'done' && <CheckIcon />}
           {task.status === 'inprogress' && (
             <ProgressIcon className="animate-spin" />
           )}

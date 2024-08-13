@@ -1,9 +1,12 @@
 import Button from './Button'
-import AddIcon from '../assets/icons/add.svg?react'
-import Trashicon from '../assets/icons/trash.svg?react'
-import SunIcon from '../assets/icons/sun.svg?react'
-import CloudSunIcon from '../assets/icons/cloud-sun.svg?react'
-import MoonIcon from '../assets/icons/moon.svg?react'
+import {
+  AddIcon,
+  TrashIcon,
+  SunIcon,
+  CloudSunIcon,
+  MoonIcon,
+} from '../assets/icons'
+
 import TasksSeparator from './TasksSeparator'
 import TASKS from '../constants/tasks.js'
 import { useState } from 'react'
@@ -64,7 +67,7 @@ const Tasks = () => {
 
         <div className="flex items-center gap-3">
           <Button variant="ghost">
-            <Trashicon />
+            <TrashIcon />
             Limpar Tarefa
           </Button>
 
