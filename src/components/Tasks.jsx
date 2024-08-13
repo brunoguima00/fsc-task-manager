@@ -18,6 +18,30 @@ const Tasks = () => {
 
   const eveningTasks = tasks.filter((task) => task.time === 'evening')
 
+  const handleTaskCheckboxClick = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id != taskId) {
+        return task
+      }
+
+      if (task.status === 'todo') {
+        return { ...task, status: 'inprogress' }
+      }
+
+      if (task.status === 'inprogress') {
+        return { ...task, status: 'done' }
+      }
+
+      if (task.status === 'done') {
+        return { ...task, status: 'todo' }
+      }
+
+      return task
+    })
+
+    setTasks(newTasks)
+  }
+
   return (
     <div className="w-full px-8 py-16">
       <div className="flex w-full justify-between">
@@ -40,6 +64,7 @@ const Tasks = () => {
           </Button>
         </div>
       </div>
+
       {/* Lista de Tarefas */}
 
       <div className="rounded-xl bg-white p-6">
@@ -47,21 +72,33 @@ const Tasks = () => {
           <TasksSeparator icon={<SunIcon />} title="Manhã" />
 
           {morningTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckboxClick={handleTaskCheckboxClick}
+            />
           ))}
         </div>
 
         <div className="my-6 space-y-3">
           <TasksSeparator icon={<CloudSunIcon />} title="Tarde" />
           {afternoonTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckboxClick={handleTaskCheckboxClick}
+            />
           ))}
         </div>
 
         <div className="space-y-3">
           <TasksSeparator icon={<MoonIcon />} title="Noite" />
           {eveningTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckboxClick={handleTaskCheckboxClick}
+            />
           ))}
         </div>
       </div>
