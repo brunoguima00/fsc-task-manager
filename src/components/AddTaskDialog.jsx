@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
+import { v4 } from 'uuid'
 
 import Button from './Button'
 import Input from './Input'
@@ -19,10 +20,24 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   useEffect(() => {
     if (!isOpen) {
       setTitle('')
-      setTime('')
+      setTime('morning')
       setDescription('')
     }
   }, [isOpen])
+
+  const handleSaveClick = () => {
+    if (!title || !time || !description) {
+      alert('Preencha todos os campos')
+    }
+    handleSubmit({
+      id: v4(),
+      title: title,
+      description: description,
+      time: time,
+      status: 'todo',
+    })
+    handleClose()
+  }
 
   return (
     <CSSTransition
@@ -83,16 +98,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   <Button
                     size="large"
                     className="w-full"
-                    onClick={() => {
-                      handleSubmit({
-                        id: Math.random(),
-                        title: title,
-                        description: description,
-                        time: time,
-                        status: 'todo',
-                      })
-                      handleClose()
-                    }}
+                    onClick={handleSaveClick}
                   >
                     Salvar{' '}
                   </Button>
