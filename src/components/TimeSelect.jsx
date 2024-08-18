@@ -1,4 +1,5 @@
 import InputLabel from './InputLabel'
+import PropTypes from 'prop-types'
 
 const TimeSelect = (props) => {
   return (
@@ -7,7 +8,7 @@ const TimeSelect = (props) => {
 
       <select
         id="time"
-        className="outline-brand-primary placeholder:text-brand-text-gray rounded-lg border border-solid border-[#ECECEC] px-4 py-3 placeholder:text-sm"
+        className="rounded-lg border border-solid border-[#ECECEC] px-4 py-3 outline-brand-primary placeholder:text-sm placeholder:text-brand-text-gray"
         {...props}
       >
         <option value="morning">Manhã</option>
@@ -19,6 +20,10 @@ const TimeSelect = (props) => {
       )}
     </div>
   )
+}
+
+TimeSelect.propTypes = {
+  errorMessage: PropTypes.string,
 }
 
 export default TimeSelect
