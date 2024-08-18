@@ -9,6 +9,7 @@ import { v4 } from 'uuid'
 import Button from './Button'
 import Input from './Input'
 import TimeSelect from './TimeSelect'
+import PropTypes from 'prop-types'
 
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const [time, setTime] = useState('morning')
@@ -148,6 +149,12 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
       </div>
     </CSSTransition>
   )
+}
+
+AddTaskDialog.PropTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }
 
 export default AddTaskDialog
