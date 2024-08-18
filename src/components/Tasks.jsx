@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 import {
@@ -8,16 +8,29 @@ import {
   SunIcon,
   TrashIcon,
 } from '../assets/icons'
-import TASKS from '../constants/tasks.js'
+
 import AddTaskDialog from './AddTaskDialog.jsx'
 import Button from './Button'
 import TaskItem from './TaskItem.jsx'
 import TasksSeparator from './TasksSeparator'
 
 const Tasks = () => {
-  const [tasks, setTasks] = useState(TASKS)
+  const [tasks, setTasks] = useState([])
 
   const [addTaskDialogIsOpen, setTaskDialogIsOpen] = useState(false)
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const response = await fetch('http://localhost:3000/tasks', {
+        method: 'GET',
+      })
+
+      const data = await response.json()
+
+      setTasks(data)
+    }
+    fetchTasks()
+  }, [])
 
   const morningTasks = tasks.filter((task) => task.time === 'morning')
 
@@ -67,7 +80,7 @@ const Tasks = () => {
     <div className="w-full px-8 py-16">
       <div className="flex w-full justify-between">
         <div>
-          <span className="text-brand-primary text-xs font-semibold">
+          <span className="text-xs font-semibold text-brand-primary">
             Minhas Tarefas
           </span>
           <h2 className="text-xl font-semibold">Minhas Tarefas</h2>

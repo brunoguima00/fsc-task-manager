@@ -151,7 +151,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   )
 }
 
-AddTaskDialog.PropTypes = {
+AddTaskDialog.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
