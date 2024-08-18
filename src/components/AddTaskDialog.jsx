@@ -11,23 +11,26 @@ import Input from './Input'
 import TimeSelect from './TimeSelect'
 
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
-  const [title, setTitle] = useState()
   const [time, setTime] = useState('morning')
-  const [description, setDescription] = useState()
   const [errors, setErrors] = useState([])
 
   const nodeRef = useRef()
+  const titleRef = useRef()
+  const descriptionRef = useRef()
 
   useEffect(() => {
     if (!isOpen) {
-      setTitle('')
       setTime('morning')
-      setDescription('')
     }
   }, [isOpen])
 
   const handleSaveClick = () => {
     const newErrors = []
+
+    console.log(descriptionRef.current.value)
+
+    const title = titleRef.current.value
+    const description = descriptionRef.current.value
 
     if (!title.trim()) {
       newErrors.push({
@@ -58,13 +61,14 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
 
     handleSubmit({
       id: v4(),
-      title: title,
+      title: titleRef.current.value,
       description: description,
       time: time,
       status: 'todo',
     })
     handleClose()
   }
+
   const titleError = errors.find((error) => error.inputName === 'title')
   const timeError = errors.find((error) => error.inputName === 'time')
   const descriptionError = errors.find(
@@ -100,8 +104,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   id="title"
                   label="Título"
                   placeholder="Insira o título da tarefa"
-                  value={title}
-                  onChange={(event) => setTitle(event.target.value)}
+                  ref={titleRef}
                   errorMessage={titleError?.message}
                 />
 
@@ -115,8 +118,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   id="description"
                   label="Descrição"
                   placeholder="Descreva a tarefa"
-                  value={description}
-                  onChange={(event) => setDescription(event.target.value)}
+                  ref={descriptionRef}
                   errorMessage={descriptionError?.message}
                 />
 
