@@ -1,5 +1,6 @@
 import { CheckIcon, DetailIcon, ProgressIcon, TrashIcon } from '../assets/icons'
 import Button from './Button'
+import PropTypes from 'prop-types'
 
 const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
   const getStatusClasses = () => {
@@ -51,6 +52,18 @@ const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
       </div>
     </div>
   )
+}
+
+TaskItem.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    time: PropTypes.oneOf(['morning', 'afternoon', 'night']).isRequired,
+    status: PropTypes.oneOf(['done', 'inprogress', 'todo']).isRequired,
+  }).isRequired,
+  handleCheckboxClick: PropTypes.func.isRequired,
+  handleDeleteClick: PropTypes.func.isRequired,
 }
 
 export default TaskItem
