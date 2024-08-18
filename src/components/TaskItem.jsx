@@ -4,13 +4,13 @@ import Button from './Button'
 const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
   const getStatusClasses = () => {
     if (task.status === 'done') {
-      return 'bg-[#00ADB5] bg-opacity-10 text-[#00ADB5]'
+      return 'bg-brand-primary bg-opacity-10 text-brand-primary'
     }
     if (task.status === 'inprogress') {
-      return 'bg-[#FFAA04] bg-opacity-10 text-[#FFAA04]'
+      return 'bg-brand-process bg-opacity-10 text-brand-process'
     }
     if (task.status === 'todo') {
-      return 'bg-[#35383E] bg-opacity-10 text-[#35383E]'
+      return 'bg-brand-dark-blue bg-opacity-10 text-brand-dark-blue'
     }
   }
   return (
