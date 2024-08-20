@@ -10,10 +10,13 @@ import Button from './Button'
 import Input from './Input'
 import TimeSelect from './TimeSelect'
 import PropTypes from 'prop-types'
+import { toast } from 'sonner'
+import { ProgressIcon } from '../assets/icons'
 
-const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
+const AddTaskDialog = ({ isOpen, handleClose, onSubmitSuccess }) => {
   const [time, setTime] = useState('morning')
   const [errors, setErrors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const nodeRef = useRef()
   const titleRef = useRef()
@@ -25,7 +28,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
     }
   }, [isOpen])
 
-  const handleSaveClick = () => {
+  const handleSaveClick = async () => {
     const newErrors = []
 
     console.log(descriptionRef.current.value)
@@ -60,13 +63,20 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
       return
     }
 
-    handleSubmit({
-      id: v4(),
-      title: titleRef.current.value,
-      description: description,
-      time: time,
-      status: 'todo',
+    const task = { id: v4(), title, time, description, status: 'todo' }
+    setIsLoading(true)
+    const response = await fetch('http://localhost:3000/tasks', {
+      method: 'POST',
+      body: JSON.stringify(task),
     })
+
+    if (!response.ok) {
+      setIsLoading(false)
+      return toast.error('Erro ao adicionar tarefa!')
+    }
+
+    onSubmitSuccess(task)
+    setIsLoading(false)
     handleClose()
   }
 
@@ -136,7 +146,11 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                     size="large"
                     className="w-full"
                     onClick={handleSaveClick}
+                    disabled={isLoading}
                   >
+                    {isLoading && (
+                      <ProgressIcon className="h-6 w-6 animate-spin" />
+                    )}
                     Salvar{' '}
                   </Button>
                 </div>
