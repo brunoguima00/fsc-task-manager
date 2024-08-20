@@ -8,13 +8,6 @@
       "status": "inprogress"
     },
     {
-      "id": "2",
-      "title": "Tarefa 2",
-      "description": "Descrição da tarefa 2",
-      "time": "morning",
-      "status": "done"
-    },
-    {
       "id": "3",
       "title": "Tarefa 3",
       "description": "Descrição da tarefa 3",
@@ -36,10 +29,10 @@
       "status": "inprogress"
     },
     {
-      "id": "6",
-      "title": "Tarefa 6",
-      "description": "Descrição da tarefa 6",
-      "time": "evening",
+      "id": "4f62e103-1ff0-45a8-8b25-4a75ea31f6db",
+      "title": "Teste T",
+      "description": "SS",
+      "time": "morning",
       "status": "todo"
     }
   ]
