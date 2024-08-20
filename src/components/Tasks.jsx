@@ -8,7 +8,6 @@ import {
   SunIcon,
   TrashIcon,
 } from '../assets/icons'
-
 import AddTaskDialog from './AddTaskDialog.jsx'
 import Button from './Button'
 import TaskItem from './TaskItem.jsx'

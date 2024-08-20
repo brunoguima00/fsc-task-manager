@@ -1,8 +1,9 @@
-import { toast } from 'sonner'
-import { CheckIcon, DetailIcon, ProgressIcon, TrashIcon } from '../assets/icons'
-import Button from './Button'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { toast } from 'sonner'
+
+import { CheckIcon, DetailIcon, ProgressIcon, TrashIcon } from '../assets/icons'
+import Button from './Button'
 
 const TaskItem = ({ task, handleCheckboxClick, onDeleteSucess }) => {
   const [deleteTaskIsLoading, setDeleteTaskIsLoading] = useState(false)
